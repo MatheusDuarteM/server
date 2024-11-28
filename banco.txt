@@ -1,0 +1,13 @@
+CREATE TABLE patrimonio (
+    id INT NOT NULL AUTO_INCREMENT,
+    marca VARCHAR(100),
+    modelo VARCHAR(100),
+    cor VARCHAR(50),
+    codigo VARCHAR(50),
+    data DATE,
+    foto BLOB,
+    status VARCHAR(50),
+    setor VARCHAR(100),
+    descricao VARCHAR(255),
+    PRIMARY KEY (id)
+);
