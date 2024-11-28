@@ -11,3 +11,8 @@ CREATE TABLE patrimonio (
     descricao VARCHAR(255),
     PRIMARY KEY (id)
 );
+CREATE TABLE marcas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    status ENUM('ativo', 'inativo') DEFAULT 'ativo'
+);

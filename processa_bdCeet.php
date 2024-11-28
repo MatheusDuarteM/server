@@ -1,14 +1,26 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+ini_set('display_errors', 1); // Exibe os erros na tela
+error_reporting(E_ALL); // Exibe todos os tipos de erro
+ini_set('error_log', 'php_errors.log'); // Registra os erros em um arquivo de log
 
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Credentials: true");
-header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type");
-header("Content-Type: application/json; charset=utf-8");
+header('Access-Control-Allow-Origin: *'); // Permite qualquer origem, considere especificar um domínio
+header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE'); // Métodos permitidos
+header('Access-Control-Allow-Headers: Content-Type, Authorization'); // Permite cabeçalhos adicionais como Authorization, caso necessário
+header("Access-Control-Allow-Credentials: true"); // Permite enviar cookies e cabeçalhos de autenticação
+header('Content-Type: application/json'); // Garante que a resposta seja em JSON
+//echo json_encode($response);
 
-function abreConexaoBD() {
+
+function respondeJson($status, $mensagem, $dados = [])
+{
+    echo json_encode(['status' => $status, 'message' => $mensagem, 'data' => $dados]);
+    exit;
+}
+
+
+// Função de conexão com o banco
+function abreConexaoBD()
+{
     $nomeServidor = "localhost";
     $nomeusuarios = "root";
     $senhaAcesso = "";
@@ -24,20 +36,22 @@ function abreConexaoBD() {
     }
 }
 
-function validaUsuario($usuario, $senha) {
+function validaUsuario($usuario, $senha)
+{
     $conn = abreConexaoBD();
     $sql = "SELECT * FROM usuario WHERE usuario = :usuario AND senha = :senha";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':usuario', $usuario);
     $stmt->bindParam(':senha', $senha);
     $stmt->execute();
-    
+
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
-function logar($usuario, $senha) {
+function logar($usuario, $senha)
+{
     $usuarioValidado = validaUsuario($usuario, $senha);
-    
+
     if ($usuarioValidado) {
         echo json_encode(['status' => 'success', 'message' => 'Login bem-sucedido!', 'usuario' => $usuarioValidado]);
     } else {
@@ -45,23 +59,25 @@ function logar($usuario, $senha) {
     }
 }
 
-function criaUsuarios($usuario, $senha) {
+function criaUsuarios($usuario, $senha)
+{
     $conn = abreConexaoBD();
     $sql = "INSERT INTO usuario (usuario, senha) VALUES (:usuario, :senha)";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':usuario', $usuario);
     $stmt->bindParam(':senha', $senha);
-    
+
     if ($stmt->execute()) {
         echo json_encode(['status' => 'success', 'message' => 'Registro criado com sucesso!']);
     } else {
         echo json_encode(['status' => 'error', 'message' => 'Erro no processo de criação.']);
     }
 }
-
-function inserirDados($marca, $modelo, $cor, $codigo, $data, $fotoBase64, $status, $setor, $descricao) {
-    if (!$marca || !$modelo || !$cor || !$codigo || !$data || !$status || !$setor || !$descricao) {
-        echo json_encode(['status' => 'error', 'message' => 'Dados incompletos para inserção']);
+function inserirDados($marca, $modelo, $cor, $codigo, $data, $fotoBase64, $status, $setor, $descricao)
+{
+    // Verifique se os dados necessários estão presentes
+    if (empty($marca) || empty($modelo) || empty($cor) || empty($codigo) || empty($data) || empty($status) || empty($setor) || empty($descricao) || empty($fotoBase64)) {
+        echo json_encode(['status' => 'error', 'message' => 'Alguns campos estão ausentes ou vazios.']);
         return;
     }
 
@@ -69,17 +85,20 @@ function inserirDados($marca, $modelo, $cor, $codigo, $data, $fotoBase64, $statu
     $fotoNome = uniqid() . '.png';
     $fotoCaminho = 'imagens/' . $fotoNome;
 
+    // Cria o diretório de imagens, se necessário
     if (!file_exists('imagens')) {
         mkdir('imagens', 0777, true);
     }
 
-    if ($fotoBase64 && base64_decode($fotoBase64, true)) {
+    // Valida a imagem e grava o arquivo
+    if ($fotoBase64 && base64_decode($fotoBase64, true) !== false) {
         file_put_contents($fotoCaminho, base64_decode($fotoBase64));
     } else {
         echo json_encode(['status' => 'error', 'message' => 'Imagem inválida']);
         return;
     }
 
+    // SQL de inserção
     $sql = "INSERT INTO patrimonio (marca, modelo, cor, codigo, data, imagem, status, setor, descricao) 
             VALUES (:marca, :modelo, :cor, :codigo, :data, :imagem, :status, :setor, :descricao)";
     $stmt = $conn->prepare($sql);
@@ -88,7 +107,7 @@ function inserirDados($marca, $modelo, $cor, $codigo, $data, $fotoBase64, $statu
     $stmt->bindParam(':cor', $cor);
     $stmt->bindParam(':codigo', $codigo);
     $stmt->bindParam(':data', $data);
-    $stmt->bindParam(':imagem', $fotoCaminho); 
+    $stmt->bindParam(':imagem', $fotoCaminho);
     $stmt->bindParam(':status', $status);
     $stmt->bindParam(':setor', $setor);
     $stmt->bindParam(':descricao', $descricao);
@@ -104,7 +123,10 @@ function inserirDados($marca, $modelo, $cor, $codigo, $data, $fotoBase64, $statu
     }
 }
 
-function listaTodosProdutos() {
+
+
+function listaTodosProdutos()
+{
     $conn = abreConexaoBD();
     $sql = "SELECT * FROM patrimonio";
     $stmt = $conn->prepare($sql);
@@ -114,7 +136,8 @@ function listaTodosProdutos() {
     echo json_encode(['status' => 'success', 'produtos' => $produtos ?: []]);
 }
 
-function alteraPatrimonio($data) {
+function alteraPatrimonio($data)
+{
     $conn = abreConexaoBD();
     $id = $data['id'] ?? null; // Verifica se o ID foi fornecido
     $marca = $data['marca'];
@@ -155,9 +178,9 @@ function alteraPatrimonio($data) {
                 status = :status, 
                 setor = :setor, 
                 descricao = :descricao" .
-            (!empty($fotoBase64) ? ", imagem = :imagem" : "") . 
-            " WHERE id = :id";
-    
+        (!empty($fotoBase64) ? ", imagem = :imagem" : "") .
+        " WHERE id = :id";
+
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':marca', $marca);
     $stmt->bindParam(':modelo', $modelo);
@@ -169,48 +192,37 @@ function alteraPatrimonio($data) {
     $stmt->bindParam(':descricao', $descricao);
     $stmt->bindParam(':id', $id);
 
-    // Atualizar a imagem se a base64 estiver presente
+    // Se houver uma imagem, salvar a imagem e incluir no banco
     if (!empty($fotoBase64)) {
         $fotoNome = uniqid() . '.png';
         $fotoCaminho = 'imagens/' . $fotoNome;
-
-        if (!file_exists('imagens')) {
-            mkdir('imagens', 0777, true);
-        }
-
-        if ($fotoBase64 && base64_decode($fotoBase64, true)) {
-            file_put_contents($fotoCaminho, base64_decode($fotoBase64));
-            $stmt->bindParam(':imagem', $fotoCaminho);
-        } else {
-            echo json_encode(['status' => 'error', 'message' => 'Imagem inválida']);
-            return;
-        }
+        file_put_contents($fotoCaminho, base64_decode($fotoBase64));
+        $stmt->bindParam(':imagem', $fotoCaminho);
     }
 
-    try {
-        if ($stmt->execute()) {
-            echo json_encode(['status' => 'success', 'message' => 'Patrimônio atualizado com sucesso!']);
-        } else {
-            echo json_encode(['status' => 'error', 'message' => 'Erro ao executar a atualização.']);
-        }
-    } catch (Exception $e) {
-        echo json_encode(['status' => 'error', 'message' => 'Erro ao atualizar patrimônio: ' . $e->getMessage()]);
+    // Executar a consulta
+    if ($stmt->execute()) {
+        echo json_encode(['status' => 'success', 'message' => 'Dados atualizados com sucesso.']);
+    } else {
+        echo json_encode(['status' => 'error', 'message' => 'Erro ao atualizar dados.']);
     }
 }
 
-function apagaDadosPatrimonio($id) {
+function apagaDadosPatrimonio($id)
+{
     $conn = abreConexaoBD();
     $sql = "DELETE FROM patrimonio WHERE id = :id";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':id', $id);
-    
+
     if ($stmt->execute()) {
         echo json_encode(['status' => 'success', 'message' => 'Patrimônio excluído com sucesso.']);
     } else {
         echo json_encode(['status' => 'error', 'message' => 'Erro ao excluir o patrimônio.']);
     }
 }
-function descartarProduto($id) {
+function descartarProduto($id)
+{
     $conn = abreConexaoBD();
 
     try {
@@ -229,41 +241,229 @@ function descartarProduto($id) {
     }
 }
 
+// Funções de manipulação de marca
+function inserirMarca($nome, $status = 'ativo') // Definindo 'ativo' como padrão
+{
+    if (empty($nome)) {
+        echo json_encode([
+            'status' => 'error',
+            'message' => "O campo 'nome' está vazio.",
+            'data' => [],
+        ]);
+        exit;
+    }
+
+    $conn = abreConexaoBD();
+    $sql = "INSERT INTO marcas (nome, marca_status) VALUES (:nome, :status)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':nome', $nome);
+    $stmt->bindParam(':status', $status);
+
+    if ($stmt->execute()) {
+        echo json_encode(['status' => 'success', 'message' => 'Marca inserida com sucesso!']);
+    } else {
+        echo json_encode(['status' => 'error', 'message' => 'Erro ao inserir a marca.']);
+    }
+}
+
+function listarMarcas($page = 1, $limit = 10, $status = 'ativo')
+{
+    // Verifica se a página e o limite estão corretos
+    $offset = ($page - 1) * $limit;
+
+    // Conexão com o banco de dados
+    $conn = abreConexaoBD();
+
+    // Verifica se a variável de status está definida corretamente
+    if (empty($status)) {
+        $status = 'ativo'; // Define um status padrão se estiver vazio
+    }
+
+    // SQL de listagem com filtro de status
+    $sql = "SELECT * FROM marcas WHERE marca_status = :status LIMIT :limit OFFSET :offset";
+    $stmt = $conn->prepare($sql);
+
+    // Bind dos parâmetros
+    $stmt->bindParam(':status', $status);
+    $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+    $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+
+    // Executa a consulta
+    $stmt->execute();
+
+    // Fetching the result
+    $marcas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Verifica se retornou algum dado
+    if ($marcas) {
+        // Retorna as marcas no formato JSON
+        respondeJson('success', 'Marcas listadas com sucesso.', $marcas);
+    } else {
+        // Caso não tenha retornado marcas
+        respondeJson('error', 'Nenhuma marca encontrada com o status "' . $status . '".');
+    }
+}
+
+
+
+function atualizarMarca($marca_id, $nome, $status = null) // O status agora é opcional
+{
+    if (empty($marca_id) || empty($nome)) {
+        echo json_encode([
+            'status' => 'error',
+            'message' => "Os campos 'marca_id' e/ou 'nome' estão ausentes ou vazios.",
+            'data' => [],
+        ]);
+        exit;
+    }
+
+    $conn = abreConexaoBD();
+    $sql = "UPDATE marcas SET nome = :nome" . ($status ? ", marca_status = :status" : "") . " WHERE marca_id = :marca_id";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':nome', $nome);
+    $stmt->bindParam(':marca_id', $marca_id);
+    if ($status) {
+        $stmt->bindParam(':status', $status);
+    }
+
+    if ($stmt->execute()) {
+        echo json_encode(['status' => 'success', 'message' => 'Marca atualizada com sucesso!']);
+    } else {
+        echo json_encode(['status' => 'error', 'message' => 'Erro ao atualizar a marca.']);
+    }
+}
+
+
+function excluirMarca($marca_id)
+{
+    if (empty($marca_id)) {
+        respondeJson('error', "O campo 'marca_id' está vazio.");
+    }
+
+    $conn = abreConexaoBD();
+    $sql = "DELETE FROM marcas WHERE marca_id = :marca_id";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':marca_id', $marca_id);
+
+    if ($stmt->execute()) {
+        respondeJson('success', 'Marca excluída com sucesso!');
+    } else {
+        respondeJson('error', 'Erro ao excluir a marca.');
+    }
+}
+
+function carregarMarca($marca_status = 'ativo')
+{
+    $conn = abreConexaoBD();
+    $sql = "SELECT * FROM marcas WHERE marca_status = :status";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':status', $marca_status);
+    $stmt->execute();
+
+    $marcas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    if ($marcas) {
+        respondeJson('success', 'Marcas carregadas com sucesso.', $marcas);
+    } else {
+        respondeJson('error', 'Nenhuma marca encontrada.');
+    }
+}
+
+
+
 if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     exit; // Para as requisições OPTIONS
 }
 
+//$data = json_decode(file_get_contents("php://input"), true);
+//$acao = $data['acao'] ?? null;
+// Capturar dados da requisição
 $data = json_decode(file_get_contents("php://input"), true);
-$acao = $data['acao'] ?? null;
-
-switch ($acao) {
-    case 'logar':
-        logar($data['usuario'], $data['senha']);
-        break;
-    case 'criaUsuarios':
-        criaUsuarios($data['usuario'], $data['senha']);
-        break;
-    case 'inserir':
-        inserirDados($data['marca'], $data['modelo'], $data['cor'], $data['codigo'], $data['data'], $data['foto'], $data['status'], $data['setor'], $data['descricao']);
-        break;
-    case 'listar':
-        listaTodosProdutos();
-        break;
-    case 'altera':
-        alteraPatrimonio($data);
-        break;
-    case 'descartar':
-        if (isset($data['id'])) {
-            descartarProduto($data['id']); // Função que altera o status no banco
-        } else {
-            echo json_encode(['status' => 'error', 'message' => 'ID não fornecido ou inválido']);
-        }     
-        break;
-    case 'excluir':
-        apagaDadosPatrimonio($data['id']);
-        break;
-    default:
-        echo json_encode(['status' => 'error', 'message' => 'Ação não reconhecida.']);
-        break;
+$acao = isset($_GET['acao']) ? $_GET['acao'] : ($data['acao'] ?? null);
+if (!$acao || !in_array($acao, ['logar', 'criaUsuarios', 'inserir', 'listar', 'altera', 'descartar', 'excluir', 'inserirMarca', 'listarMarcas', 'atualizarMarca', 'excluirMarca', 'carregarMarca'])) {
+    echo json_encode(['status' => 'error', 'message' => 'Ação inválida.']);
+    exit;
 }
-?>
+
+file_put_contents('debug.txt', "Ação recebida: $acao\n", FILE_APPEND); // Log temporário
+file_put_contents('debug.txt', "Dados recebidos: " . json_encode($data) . "\n", FILE_APPEND);
+
+//echo "Ação recebida: $acao"; // Adicione este log
+
+try {
+    switch ($acao) {
+        case 'logar':
+            logar($data['usuario'], $data['senha']);
+            break;
+        case 'criaUsuarios':
+            criaUsuarios($data['usuario'], $data['senha']);
+            break;
+        case 'inserir':
+            inserirDados(
+                $data['marca_status'], // Substituído de 'marca' para 'marca_status'
+                $data['modelo'],
+                $data['cor'],
+                $data['codigo'],
+                $data['data'],
+                $data['foto'],
+                $data['status'],
+                $data['setor'],
+                $data['descricao']
+            );
+            break;
+        case 'listar':
+            listaTodosProdutos();
+            break;
+        case 'altera':
+            alteraPatrimonio($data);
+            break;
+        case 'descartar':
+            if (isset($data['id'])) {
+                descartarProduto($data['id']);
+            } else {
+                respondeJson('error', 'ID não fornecido.');
+            }
+            break;
+        case 'excluir':
+            apagaDadosPatrimonio($data['id']);
+            break;
+        case 'inserirMarca':
+            $status = isset($data['status']) ? $data['status'] : 'ativo'; // Valor padrão 'ativo'
+            inserirMarca($data['nome'], $status);
+            break;
+
+        case 'listarMarcas':
+            $status = isset($data['status']) ? $data['status'] : 'ativo'; // Valor padrão 'ativo'
+            $page = isset($data['page']) ? $data['page'] : 1;  // Valor padrão para 'page' (caso não esteja presente)
+            $limit = isset($data['limit']) ? $data['limit'] : 10; // Valor padrão para 'limit' (caso não esteja presente)
+
+            listarMarcas($page, $limit, $status);
+            break;
+
+
+        case 'atualizarMarca':
+            if (empty($data['marca_id']) || empty($data['nome'])) {
+                respondeJson('error', "Os campos 'marca_id' e 'nome' são obrigatórios.");
+            }
+            $status = isset($data['status']) ? $data['status'] : null; // Status opcional
+            atualizarMarca($data['marca_id'], $data['nome'], $status);
+            break;
+
+        case 'excluirMarca':
+            excluirMarca($data['marca_id']);
+            break;
+
+        case 'carregarMarca':
+            if (isset($data['marca_status'])) {
+                carregarMarca($data['marca_status']);
+            } else {
+                respondeJson('error', 'Status não fornecido.');
+            }
+            break;
+
+        default:
+            respondeJson('error', 'Ação inválida ou não especificada.');
+    }
+} catch (Exception $e) {
+    respondeJson('error', 'Erro interno no servidor: ' . $e->getMessage());
+}
