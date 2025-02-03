@@ -36,6 +36,43 @@ function abreConexaoBD()
     }
 }
 
+function buscaResumoPatrimonio()
+{
+    $conn = abreConexaoBD();
+
+    try {
+        // Consultar o total de patrimônio descartado
+        $queryDescartado = "SELECT COUNT(*) AS total FROM patrimonio WHERE status = 'descartado'";
+        $stmtDescartado = $conn->query($queryDescartado);
+        $descartado = (int)$stmtDescartado->fetch(PDO::FETCH_ASSOC)['total'];  // Garantir que seja um inteiro
+
+        // Consultar o total de patrimônio emprestado
+        $queryEmprestado = "SELECT COUNT(*) AS total FROM patrimonio WHERE status = 'Emprestado'";
+        $stmtEmprestado = $conn->query($queryEmprestado);
+        $emprestado = (int)$stmtEmprestado->fetch(PDO::FETCH_ASSOC)['total'];  // Garantir que seja um inteiro
+
+        // Consultar o total de patrimônio em uso
+        $queryUsando = "SELECT COUNT(*) AS total FROM patrimonio WHERE status = 'Usando'";
+        $stmtUsando = $conn->query($queryUsando);
+        $usando = (int)$stmtUsando->fetch(PDO::FETCH_ASSOC)['total'];  // Garantir que seja um inteiro
+
+        // Retornar os dados em formato JSON
+        echo json_encode([
+            'status' => 'success',
+            'data' => [
+                'descartado' => (string)$descartado, // Garantir que seja retornado como string
+                'Emprestado' => (string)$emprestado, // Garantir que seja retornado como string
+                'Usando' => (string)$usando, // Garantir que seja retornado como string
+            ]
+        ]);
+
+    } catch (PDOException $e) {
+        echo json_encode(['status' => 'error', 'message' => 'Erro ao buscar resumo do patrimônio: ' . $e->getMessage()]);
+    }
+}
+
+
+
 function validaUsuario($usuario, $senha)
 {
     $conn = abreConexaoBD();
@@ -369,6 +406,53 @@ function carregarMarca($marca_status = 'ativo')
     }
 }
 
+function atualizarStatus($id, $status)
+{
+    ini_set('display_errors', 1);
+    error_reporting(E_ALL);
+    header('Content-Type: application/json; charset=utf-8');
+
+    // Verifica se os parâmetros são válidos
+    if (!isset($id, $status) || empty($id)) {
+        echo json_encode(['status' => 'error', 'message' => 'Parâmetros inválidos']);
+        exit;
+    }
+
+    $conn = abreConexaoBD();
+
+    if (!$conn) {
+        echo json_encode(['status' => 'error', 'message' => 'Erro na conexão com o banco de dados']);
+        exit;
+    }
+
+    try {
+        // Prepara a query
+        $sql = "UPDATE patrimonio SET status = :status WHERE id = :id";
+        $stmt = $conn->prepare($sql);
+        
+        if (!$stmt) {
+            echo json_encode(['status' => 'error', 'message' => 'Erro ao preparar a query']);
+            exit;
+        }
+
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':status', $status, PDO::PARAM_STR);
+
+        // Executa e verifica se foi bem-sucedido
+        if (!$stmt->execute()) {
+            echo json_encode([
+                'status' => 'error',
+                'message' => 'Erro ao executar a query',
+                'debug' => $stmt->errorInfo()
+            ]);
+            exit;
+        }
+
+        echo json_encode(['status' => 'success', 'message' => 'Status atualizado com sucesso']);
+    } catch (Exception $e) {
+        echo json_encode(['status' => 'error', 'message' => 'Erro: ' . $e->getMessage()]);
+    }
+}
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
@@ -380,7 +464,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 // Capturar dados da requisição
 $data = json_decode(file_get_contents("php://input"), true);
 $acao = isset($_GET['acao']) ? $_GET['acao'] : ($data['acao'] ?? null);
-if (!$acao || !in_array($acao, ['logar', 'criaUsuarios', 'inserir', 'listar', 'altera', 'descartar', 'excluir', 'inserirMarca', 'listarMarcas', 'atualizarMarca', 'excluirMarca', 'carregarMarca'])) {
+if (!$acao || !in_array($acao, ['logar', 'criaUsuarios', 'inserir', 'listar', 'altera', 'descartar', 'excluir', 'inserirMarca', 'listarMarcas', 'atualizarMarca', 'excluirMarca', 'carregarMarca','buscaResumoPatrimonio','atualizarStatus'])) {
     echo json_encode(['status' => 'error', 'message' => 'Ação inválida.']);
     exit;
 }
@@ -431,7 +515,14 @@ try {
             $status = isset($data['status']) ? $data['status'] : 'ativo'; // Valor padrão 'ativo'
             inserirMarca($data['nome'], $status);
             break;
-
+        case 'atualizarStatus':
+            if (isset($data['id'], $data['status'])) {
+                atualizarStatus($data['id'], $data['status']);
+            } else {
+                respondeJson('error', 'ID ou status não fornecido.');
+            }
+            break;
+            
         case 'listarMarcas':
             $status = isset($data['status']) ? $data['status'] : 'ativo'; // Valor padrão 'ativo'
             $page = isset($data['page']) ? $data['page'] : 1;  // Valor padrão para 'page' (caso não esteja presente)
@@ -453,6 +544,10 @@ try {
             excluirMarca($data['marca_id']);
             break;
 
+        case 'buscaResumoPatrimonio':
+            buscaResumoPatrimonio();
+            break;
+            
         case 'carregarMarca':
             if (isset($data['marca_status'])) {
                 carregarMarca($data['marca_status']);
