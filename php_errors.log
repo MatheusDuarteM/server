@@ -86,3 +86,431 @@
 [30-Jan-2025 12:05:10 Europe/Berlin] PHP Warning:  Undefined variable $status in C:\xampp\htdocs\server\processa_bdCeet.php on line 519
 [30-Jan-2025 12:05:11 Europe/Berlin] PHP Warning:  Undefined variable $id in C:\xampp\htdocs\server\processa_bdCeet.php on line 519
 [30-Jan-2025 12:05:11 Europe/Berlin] PHP Warning:  Undefined variable $status in C:\xampp\htdocs\server\processa_bdCeet.php on line 519
+[04-Mar-2025 11:08:23 Europe/Berlin] PHP Warning:  Undefined array key "imagemModelo" in C:\xampp\htdocs\server\processa_bdCeet.php on line 550
+[04-Mar-2025 11:13:41 Europe/Berlin] PHP Warning:  Undefined array key "imagemModelo" in C:\xampp\htdocs\server\processa_bdCeet.php on line 557
+[04-Mar-2025 11:16:46 Europe/Berlin] PHP Warning:  Undefined variable $stmt in C:\xampp\htdocs\server\processa_bdCeet.php on line 217
+[04-Mar-2025 11:16:46 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function execute() on null in C:\xampp\htdocs\server\processa_bdCeet.php:217
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\server\processa_bdCeet.php on line 217
+[04-Mar-2025 11:16:46 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\server\processa_bdCeet.php on line 170
+[04-Mar-2025 11:16:46 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\server\processa_bdCeet.php on line 171
+[04-Mar-2025 11:16:46 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\server\processa_bdCeet.php on line 172
+[04-Mar-2025 11:16:46 Europe/Berlin] Erro ao inserir dados: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'imagem' in 'field list'
+[04-Mar-2025 11:16:46 Europe/Berlin] PHP Warning:  Undefined variable $stmt in C:\xampp\htdocs\server\processa_bdCeet.php on line 217
+[04-Mar-2025 11:16:46 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function execute() on null in C:\xampp\htdocs\server\processa_bdCeet.php:217
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\server\processa_bdCeet.php on line 217
+[04-Mar-2025 11:24:57 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\server\processa_bdCeet.php on line 170
+[04-Mar-2025 11:24:57 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\server\processa_bdCeet.php on line 171
+[04-Mar-2025 11:24:57 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\server\processa_bdCeet.php on line 172
+[04-Mar-2025 11:24:57 Europe/Berlin] Erro ao inserir dados: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'imagem' in 'field list'
+[04-Mar-2025 11:25:24 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\server\processa_bdCeet.php on line 170
+[04-Mar-2025 11:25:24 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\server\processa_bdCeet.php on line 171
+[04-Mar-2025 11:25:24 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\server\processa_bdCeet.php on line 172
+[04-Mar-2025 11:25:24 Europe/Berlin] Erro ao inserir dados: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'imagem' in 'field list'
+[04-Mar-2025 11:25:48 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\server\processa_bdCeet.php on line 170
+[04-Mar-2025 11:25:48 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\server\processa_bdCeet.php on line 171
+[04-Mar-2025 11:25:48 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\server\processa_bdCeet.php on line 172
+[04-Mar-2025 11:25:48 Europe/Berlin] Erro ao inserir dados: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'imagem' in 'field list'
+[04-Mar-2025 11:29:36 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\server\processa_bdCeet.php on line 168
+[04-Mar-2025 11:29:36 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\server\processa_bdCeet.php on line 169
+[04-Mar-2025 11:29:36 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\server\processa_bdCeet.php on line 170
+[04-Mar-2025 11:29:36 Europe/Berlin] Erro ao inserir dados: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'imagem' in 'field list'
+[04-Mar-2025 11:30:12 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\server\processa_bdCeet.php on line 168
+[04-Mar-2025 11:30:12 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\server\processa_bdCeet.php on line 169
+[04-Mar-2025 11:30:12 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\server\processa_bdCeet.php on line 170
+[04-Mar-2025 11:30:12 Europe/Berlin] Erro ao inserir dados: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'imagem' in 'field list'
+[04-Mar-2025 11:30:16 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\server\processa_bdCeet.php on line 168
+[04-Mar-2025 11:30:16 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\server\processa_bdCeet.php on line 169
+[04-Mar-2025 11:30:16 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\server\processa_bdCeet.php on line 170
+[04-Mar-2025 11:30:16 Europe/Berlin] Erro ao inserir dados: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'imagem' in 'field list'
+[04-Mar-2025 11:34:15 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\server\processa_bdCeet.php on line 168
+[04-Mar-2025 11:34:15 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\server\processa_bdCeet.php on line 169
+[04-Mar-2025 11:34:15 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\server\processa_bdCeet.php on line 170
+[04-Mar-2025 11:34:15 Europe/Berlin] Erro ao inserir dados: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+[04-Mar-2025 11:37:16 Europe/Berlin] PHP Warning:  Undefined array key "foto" in C:\xampp\htdocs\server\processa_bdCeet.php on line 542
+[04-Mar-2025 11:37:51 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\server\processa_bdCeet.php on line 168
+[04-Mar-2025 11:37:51 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\server\processa_bdCeet.php on line 169
+[04-Mar-2025 11:37:51 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\server\processa_bdCeet.php on line 170
+[04-Mar-2025 11:37:51 Europe/Berlin] Erro ao inserir dados: SQLSTATE[HY093]: Invalid parameter number: parameter was not defined
+[04-Mar-2025 11:40:46 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\server\processa_bdCeet.php on line 168
+[04-Mar-2025 11:40:46 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\server\processa_bdCeet.php on line 169
+[04-Mar-2025 11:40:46 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\xampp\htdocs\server\processa_bdCeet.php on line 170
+[04-Mar-2025 11:41:31 Europe/Berlin] Erro ao inserir dados: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'mod teste' for key 'PRIMARY'
+[04-Mar-2025 12:37:25 Europe/Berlin] PHP Warning:  Undefined array key "foto" in C:\xampp\htdocs\server\processa_bdCeet.php on line 563
+[04-Mar-2025 12:53:55 Europe/Berlin] listarModelos: SQL = SELECT modelo FROM inserirmodelo
+[04-Mar-2025 12:53:55 Europe/Berlin] listarModelos: Erro SQL = Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+
+[04-Mar-2025 12:53:55 Europe/Berlin] listarModelos: Modelos = Array
+(
+    [0] => Array
+        (
+            [modelo] => mod teste
+        )
+
+    [1] => Array
+        (
+            [modelo] => modteste
+        )
+
+    [2] => Array
+        (
+            [modelo] => novo teste
+        )
+
+    [3] => Array
+        (
+            [modelo] => teste 2
+        )
+
+)
+
+[04-Mar-2025 12:55:15 Europe/Berlin] listarModelos: SQL = SELECT modelo FROM inserirmodelo
+[04-Mar-2025 12:55:15 Europe/Berlin] listarModelos: Erro SQL = Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+
+[04-Mar-2025 12:55:15 Europe/Berlin] listarModelos: Modelos = Array
+(
+    [0] => Array
+        (
+            [modelo] => mod teste
+        )
+
+    [1] => Array
+        (
+            [modelo] => modteste
+        )
+
+    [2] => Array
+        (
+            [modelo] => novo teste
+        )
+
+    [3] => Array
+        (
+            [modelo] => teste 2
+        )
+
+)
+
+[04-Mar-2025 12:55:21 Europe/Berlin] listarModelos: SQL = SELECT modelo FROM inserirmodelo
+[04-Mar-2025 12:55:21 Europe/Berlin] listarModelos: Erro SQL = Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+
+[04-Mar-2025 12:55:21 Europe/Berlin] listarModelos: Modelos = Array
+(
+    [0] => Array
+        (
+            [modelo] => mod teste
+        )
+
+    [1] => Array
+        (
+            [modelo] => modteste
+        )
+
+    [2] => Array
+        (
+            [modelo] => novo teste
+        )
+
+    [3] => Array
+        (
+            [modelo] => teste 2
+        )
+
+)
+
+[04-Mar-2025 12:57:50 Europe/Berlin] listarModelos: SQL = SELECT modelo FROM inserirmodelo
+[04-Mar-2025 12:57:50 Europe/Berlin] listarModelos: Erro SQL = Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+
+[04-Mar-2025 12:57:50 Europe/Berlin] listarModelos: Modelos = Array
+(
+    [0] => Array
+        (
+            [modelo] => mod teste
+        )
+
+    [1] => Array
+        (
+            [modelo] => modteste
+        )
+
+    [2] => Array
+        (
+            [modelo] => novo teste
+        )
+
+    [3] => Array
+        (
+            [modelo] => teste 2
+        )
+
+)
+
+[04-Mar-2025 12:58:45 Europe/Berlin] listarModelos: SQL = SELECT modelo FROM inserirmodelo
+[04-Mar-2025 12:58:45 Europe/Berlin] listarModelos: Erro SQL = Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+
+[04-Mar-2025 12:58:45 Europe/Berlin] listarModelos: Modelos = Array
+(
+    [0] => Array
+        (
+            [modelo] => mod teste
+        )
+
+    [1] => Array
+        (
+            [modelo] => modteste
+        )
+
+    [2] => Array
+        (
+            [modelo] => novo teste
+        )
+
+    [3] => Array
+        (
+            [modelo] => teste 2
+        )
+
+)
+
+[04-Mar-2025 13:00:38 Europe/Berlin] buscarModelo: Modelo = modteste
+[04-Mar-2025 13:00:38 Europe/Berlin] buscarModelo: SQL = SELECT * FROM inserirmodelo WHERE modelo = :modelo
+[04-Mar-2025 13:00:38 Europe/Berlin] buscarModelo: ModeloData = Array
+(
+    [modelo] => modteste
+    [cor] => corteste
+    [imagemModelo] => ‰PNG
+
+
+[04-Mar-2025 13:02:42 Europe/Berlin] listarModelos: SQL = SELECT modelo FROM inserirmodelo
+[04-Mar-2025 13:02:42 Europe/Berlin] listarModelos: Erro SQL = Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+
+[04-Mar-2025 13:02:42 Europe/Berlin] listarModelos: Modelos = Array
+(
+    [0] => Array
+        (
+            [modelo] => mod teste
+        )
+
+    [1] => Array
+        (
+            [modelo] => modteste
+        )
+
+    [2] => Array
+        (
+            [modelo] => novo teste
+        )
+
+    [3] => Array
+        (
+            [modelo] => teste 2
+        )
+
+)
+
+[04-Mar-2025 13:02:44 Europe/Berlin] buscarModelo: Modelo = modteste
+[04-Mar-2025 13:02:44 Europe/Berlin] buscarModelo: SQL = SELECT * FROM inserirmodelo WHERE modelo = :modelo
+[04-Mar-2025 13:02:44 Europe/Berlin] buscarModelo: ModeloData = Array
+(
+    [modelo] => modteste
+    [cor] => corteste
+    [imagemModelo] => ‰PNG
+
+
+[04-Mar-2025 13:05:54 Europe/Berlin] listarModelos: SQL = SELECT modelo FROM inserirmodelo
+[04-Mar-2025 13:05:54 Europe/Berlin] listarModelos: Erro SQL = Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+
+[04-Mar-2025 13:05:54 Europe/Berlin] listarModelos: Modelos = Array
+(
+    [0] => Array
+        (
+            [modelo] => mod teste
+        )
+
+    [1] => Array
+        (
+            [modelo] => modteste
+        )
+
+    [2] => Array
+        (
+            [modelo] => novo teste
+        )
+
+    [3] => Array
+        (
+            [modelo] => teste 2
+        )
+
+)
+
+[04-Mar-2025 13:05:56 Europe/Berlin] buscarModelo: Modelo = modteste
+[04-Mar-2025 13:05:56 Europe/Berlin] buscarModelo: SQL = SELECT * FROM inserirmodelo WHERE modelo = :modelo
+[04-Mar-2025 13:05:56 Europe/Berlin] buscarModelo: ModeloData = Array
+(
+    [modelo] => modteste
+    [cor] => corteste
+    [imagemModelo] => ‰PNG
+
+
+[04-Mar-2025 13:06:31 Europe/Berlin] buscarModelo: Modelo = novo teste
+[04-Mar-2025 13:06:31 Europe/Berlin] buscarModelo: SQL = SELECT * FROM inserirmodelo WHERE modelo = :modelo
+[04-Mar-2025 13:06:31 Europe/Berlin] buscarModelo: ModeloData = Array
+(
+    [modelo] => novo teste
+    [cor] => cor teste
+    [imagemModelo] => ‰PNG
+
+
+[04-Mar-2025 13:08:37 Europe/Berlin] listarModelos: SQL = SELECT modelo FROM inserirmodelo
+[04-Mar-2025 13:08:37 Europe/Berlin] listarModelos: Erro SQL = Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+
+[04-Mar-2025 13:08:37 Europe/Berlin] listarModelos: Modelos = Array
+(
+    [0] => Array
+        (
+            [modelo] => mod teste
+        )
+
+    [1] => Array
+        (
+            [modelo] => modteste
+        )
+
+    [2] => Array
+        (
+            [modelo] => novo teste
+        )
+
+    [3] => Array
+        (
+            [modelo] => teste 2
+        )
+
+)
+
+[04-Mar-2025 13:09:05 Europe/Berlin] listarModelos: SQL = SELECT modelo FROM inserirmodelo
+[04-Mar-2025 13:09:05 Europe/Berlin] listarModelos: Erro SQL = Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+
+[04-Mar-2025 13:09:05 Europe/Berlin] listarModelos: Modelos = Array
+(
+    [0] => Array
+        (
+            [modelo] => mod teste
+        )
+
+    [1] => Array
+        (
+            [modelo] => modteste
+        )
+
+    [2] => Array
+        (
+            [modelo] => novo teste
+        )
+
+    [3] => Array
+        (
+            [modelo] => teste 2
+        )
+
+)
+
+[04-Mar-2025 13:09:08 Europe/Berlin] buscarModelo: Modelo = modteste
+[04-Mar-2025 13:09:08 Europe/Berlin] buscarModelo: SQL = SELECT * FROM inserirmodelo WHERE modelo = :modelo
+[04-Mar-2025 13:09:08 Europe/Berlin] buscarModelo: ModeloData = Array
+(
+    [modelo] => modteste
+    [cor] => corteste
+    [imagemModelo] => ‰PNG
+
+
+[04-Mar-2025 13:09:59 Europe/Berlin] listarModelos: SQL = SELECT modelo FROM inserirmodelo
+[04-Mar-2025 13:09:59 Europe/Berlin] listarModelos: Erro SQL = Array
+(
+    [0] => 00000
+    [1] => 
+    [2] => 
+)
+
+[04-Mar-2025 13:09:59 Europe/Berlin] listarModelos: Modelos = Array
+(
+    [0] => Array
+        (
+            [modelo] => mod teste
+        )
+
+    [1] => Array
+        (
+            [modelo] => modteste
+        )
+
+    [2] => Array
+        (
+            [modelo] => novo teste
+        )
+
+    [3] => Array
+        (
+            [modelo] => teste 2
+        )
+
+)
+
+[04-Mar-2025 13:10:03 Europe/Berlin] buscarModelo: Modelo = modteste
+[04-Mar-2025 13:10:03 Europe/Berlin] buscarModelo: SQL = SELECT * FROM inserirmodelo WHERE modelo = :modelo
+[04-Mar-2025 13:10:03 Europe/Berlin] buscarModelo: ModeloData = Array
+(
+    [modelo] => modteste
+    [cor] => corteste
+    [imagemModelo] => ‰PNG
+
+
