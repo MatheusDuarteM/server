@@ -56,3 +56,41 @@
 [27-Nov-2024 18:40:06 Europe/Berlin] PHP Warning:  Undefined variable $response in C:\xampp\htdocs\server\processa_bdCeet.php on line 11
 [27-Nov-2024 18:42:58 Europe/Berlin] PHP Warning:  Undefined variable $response in C:\xampp\htdocs\server\processa_bdCeet.php on line 11
 [28-Nov-2024 11:41:41 Europe/Berlin] PHP Warning:  Undefined array key "marca" in C:\xampp\htdocs\server\processa_bdCeet.php on line 401
+[30-Jan-2025 11:32:50 Europe/Berlin] PHP Warning:  Undefined variable $id in C:\xampp\htdocs\server\processa_bdCeet.php on line 492
+[30-Jan-2025 11:32:50 Europe/Berlin] PHP Warning:  Undefined variable $status in C:\xampp\htdocs\server\processa_bdCeet.php on line 492
+[30-Jan-2025 11:32:52 Europe/Berlin] PHP Warning:  Undefined variable $id in C:\xampp\htdocs\server\processa_bdCeet.php on line 492
+[30-Jan-2025 11:32:52 Europe/Berlin] PHP Warning:  Undefined variable $status in C:\xampp\htdocs\server\processa_bdCeet.php on line 492
+[30-Jan-2025 11:40:11 Europe/Berlin] PHP Warning:  Undefined variable $id in C:\xampp\htdocs\server\processa_bdCeet.php on line 504
+[30-Jan-2025 11:40:11 Europe/Berlin] PHP Warning:  Undefined variable $status in C:\xampp\htdocs\server\processa_bdCeet.php on line 504
+[30-Jan-2025 11:48:49 Europe/Berlin] PHP Warning:  Undefined variable $id in C:\xampp\htdocs\server\processa_bdCeet.php on line 504
+[30-Jan-2025 11:48:49 Europe/Berlin] PHP Warning:  Undefined variable $status in C:\xampp\htdocs\server\processa_bdCeet.php on line 504
+[30-Jan-2025 11:48:52 Europe/Berlin] PHP Warning:  Undefined variable $id in C:\xampp\htdocs\server\processa_bdCeet.php on line 504
+[30-Jan-2025 11:48:52 Europe/Berlin] PHP Warning:  Undefined variable $status in C:\xampp\htdocs\server\processa_bdCeet.php on line 504
+[30-Jan-2025 11:52:38 Europe/Berlin] PHP Warning:  Undefined variable $id in C:\xampp\htdocs\server\processa_bdCeet.php on line 504
+[30-Jan-2025 11:52:38 Europe/Berlin] PHP Warning:  Undefined variable $status in C:\xampp\htdocs\server\processa_bdCeet.php on line 504
+[30-Jan-2025 11:52:40 Europe/Berlin] PHP Warning:  Undefined variable $id in C:\xampp\htdocs\server\processa_bdCeet.php on line 504
+[30-Jan-2025 11:52:40 Europe/Berlin] PHP Warning:  Undefined variable $status in C:\xampp\htdocs\server\processa_bdCeet.php on line 504
+[30-Jan-2025 11:59:17 Europe/Berlin] PHP Warning:  Undefined variable $id in C:\xampp\htdocs\server\processa_bdCeet.php on line 504
+[30-Jan-2025 11:59:17 Europe/Berlin] PHP Warning:  Undefined variable $status in C:\xampp\htdocs\server\processa_bdCeet.php on line 504
+[30-Jan-2025 11:59:18 Europe/Berlin] PHP Warning:  Undefined variable $id in C:\xampp\htdocs\server\processa_bdCeet.php on line 504
+[30-Jan-2025 11:59:18 Europe/Berlin] PHP Warning:  Undefined variable $status in C:\xampp\htdocs\server\processa_bdCeet.php on line 504
+[30-Jan-2025 11:59:19 Europe/Berlin] PHP Warning:  Undefined variable $id in C:\xampp\htdocs\server\processa_bdCeet.php on line 504
+[30-Jan-2025 11:59:19 Europe/Berlin] PHP Warning:  Undefined variable $status in C:\xampp\htdocs\server\processa_bdCeet.php on line 504
+[30-Jan-2025 12:03:11 Europe/Berlin] PHP Warning:  Undefined variable $id in C:\xampp\htdocs\server\processa_bdCeet.php on line 519
+[30-Jan-2025 12:03:11 Europe/Berlin] PHP Warning:  Undefined variable $status in C:\xampp\htdocs\server\processa_bdCeet.php on line 519
+[30-Jan-2025 12:03:17 Europe/Berlin] PHP Warning:  Undefined variable $id in C:\xampp\htdocs\server\processa_bdCeet.php on line 519
+[30-Jan-2025 12:03:17 Europe/Berlin] PHP Warning:  Undefined variable $status in C:\xampp\htdocs\server\processa_bdCeet.php on line 519
+[30-Jan-2025 12:03:19 Europe/Berlin] PHP Warning:  Undefined variable $id in C:\xampp\htdocs\server\processa_bdCeet.php on line 519
+[30-Jan-2025 12:03:19 Europe/Berlin] PHP Warning:  Undefined variable $status in C:\xampp\htdocs\server\processa_bdCeet.php on line 519
+[30-Jan-2025 12:05:10 Europe/Berlin] PHP Warning:  Undefined variable $id in C:\xampp\htdocs\server\processa_bdCeet.php on line 519
+[30-Jan-2025 12:05:10 Europe/Berlin] PHP Warning:  Undefined variable $status in C:\xampp\htdocs\server\processa_bdCeet.php on line 519
+[30-Jan-2025 12:05:11 Europe/Berlin] PHP Warning:  Undefined variable $id in C:\xampp\htdocs\server\processa_bdCeet.php on line 519
+[30-Jan-2025 12:05:11 Europe/Berlin] PHP Warning:  Undefined variable $status in C:\xampp\htdocs\server\processa_bdCeet.php on line 519
+[13-May-2025 01:18:36 Europe/Berlin] PHP Deprecated:  trim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\server\processa_bdCeet.php on line 176
+[13-May-2025 01:19:20 Europe/Berlin] PHP Deprecated:  trim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\server\processa_bdCeet.php on line 176
+[13-May-2025 01:30:55 Europe/Berlin] PHP Deprecated:  trim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\server\processa_bdCeet.php on line 365
+[13-May-2025 01:33:30 Europe/Berlin] PHP Deprecated:  trim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\server\processa_bdCeet.php on line 366
+[13-May-2025 01:33:52 Europe/Berlin] PHP Deprecated:  trim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\server\processa_bdCeet.php on line 366
+[13-May-2025 01:34:32 Europe/Berlin] PHP Deprecated:  trim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\server\processa_bdCeet.php on line 366
+[13-May-2025 01:45:56 Europe/Berlin] PHP Deprecated:  trim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\server\processa_bdCeet.php on line 366
+[13-May-2025 01:46:15 Europe/Berlin] PHP Deprecated:  trim(): Passing null to parameter #1 ($string) of type string is deprecated in C:\xampp\htdocs\server\processa_bdCeet.php on line 366
