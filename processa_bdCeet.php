@@ -303,6 +303,53 @@ function carregarMarca($marca_status = 'ativo')
     }
 }
 
+function atualizarStatus($id, $status)
+{
+    ini_set('display_errors', 1);
+    error_reporting(E_ALL);
+    header('Content-Type: application/json; charset=utf-8');
+
+    // Verifica se os parâmetros são válidos
+    if (!isset($id, $status) || empty($id)) {
+        echo json_encode(['status' => 'error', 'message' => 'Parâmetros inválidos']);
+        exit;
+    }
+
+    $conn = abreConexaoBD();
+
+    if (!$conn) {
+        echo json_encode(['status' => 'error', 'message' => 'Erro na conexão com o banco de dados']);
+        exit;
+    }
+
+    try {
+        // Prepara a query
+        $sql = "UPDATE patrimonio SET status = :status WHERE id = :id";
+        $stmt = $conn->prepare($sql);
+
+        if (!$stmt) {
+            echo json_encode(['status' => 'error', 'message' => 'Erro ao preparar a query']);
+            exit;
+        }
+
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':status', $status, PDO::PARAM_STR);
+
+        // Executa e verifica se foi bem-sucedido
+        if (!$stmt->execute()) {
+            echo json_encode([
+                'status' => 'error',
+                'message' => 'Erro ao executar a query',
+                'debug' => $stmt->errorInfo()
+            ]);
+            exit;
+        }
+
+        echo json_encode(['status' => 'success', 'message' => 'Status atualizado com sucesso']);
+    } catch (Exception $e) {
+        echo json_encode(['status' => 'error', 'message' => 'Erro: ' . $e->getMessage()]);
+    }
+}
 
 // == MODELO (NOVAS FUNÇÕES INTEGRADAS) ==
 /**
