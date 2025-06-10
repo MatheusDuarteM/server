@@ -1,0 +1,18 @@
+# Ativar o mecanismo de reescrita
+RewriteEngine on
+
+# Remover a extensão dos arquivos na URL
+RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteRule ^(.*)$ busca.dart?url=$1
+
+
+# Permitir CORS para todos os domínios
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "GET, POST, OPTIONS"
+    Header set Access-Control-Allow-Headers "Content-Type, Authorization"
+</IfModule>
+
+# Desabilitar a listagem de diretórios no servidor
+Options -Indexes
